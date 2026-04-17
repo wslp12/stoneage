@@ -10,8 +10,8 @@ const createWindow = () => {
         title: '지만이의 스톤피디아',
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
-            contextIsolation: true,
-            nodeIntegration: false
+            nodeIntegration: true,
+            contextIsolation: false
         }
     })
 
@@ -39,10 +39,18 @@ app.on('window-all-closed', () => {
 
 // IPC to read pets.json
 ipcMain.handle('read-pets', async () => {
-    const filePath = path.join(__dirname, 'pets.json')
-    if (fs.existsSync(filePath)) {
-        const data = fs.readFileSync(filePath, 'utf8')
-        return JSON.parse(data)
+    try {
+        const filePath = path.join(__dirname, 'pets.json')
+        console.log('Reading pets from:', filePath)
+
+        if (filePath && typeof filePath === 'string' && fs.existsSync(filePath)) {
+            const data = fs.readFileSync(filePath, 'utf8')
+            return JSON.parse(data)
+        }
+        console.warn('pets.json not found at:', filePath)
+        return []
+    } catch (error) {
+        console.error('Error reading pets.json:', error)
+        throw error // Propagate to renderer's catch block
     }
-    return []
 })
