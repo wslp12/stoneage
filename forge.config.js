@@ -47,7 +47,7 @@ module.exports = {
       config: {
         repository: {
           owner: 'wslp12',
-          name: 'dark'
+          name: 'stoneage'
         },
         prerelease: false,
         draft: true
