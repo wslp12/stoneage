@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스톤에이지 페트 도감</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@600;800&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg-color: #0f172a;
@@ -27,8 +30,8 @@
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0, transparent 50%), 
+            background-image:
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0, transparent 50%),
                 radial-gradient(at 100% 0%, rgba(129, 140, 248, 0.15) 0, transparent 50%);
             color: var(--text-primary);
             min-height: 100vh;
@@ -97,13 +100,13 @@
             font-size: 1rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             outline: none;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         input[type="text"]:focus {
             background: rgba(255, 255, 255, 0.12);
             border-color: var(--accent-color);
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.2), inset 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         select {
@@ -126,7 +129,8 @@
             transition: all 0.3s;
         }
 
-        select:hover, select:focus {
+        select:hover,
+        select:focus {
             background-color: rgba(255, 255, 255, 0.12);
             border-color: var(--accent-color);
         }
@@ -161,16 +165,28 @@
             text-align: left;
         }
 
-        .attribute-filters, .stat-growth-filters {
+        .attribute-filters,
+        .stat-growth-filters {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
-        input#minAtkG::-webkit-slider-thumb { background: #f87171; }
-        input#minDefG::-webkit-slider-thumb { background: #60a5fa; }
-        input#minAgiG::-webkit-slider-thumb { background: #34d399; }
-        input#minHpG::-webkit-slider-thumb { background: #e879f9; }
+        input#minAtkG::-webkit-slider-thumb {
+            background: #f87171;
+        }
+
+        input#minDefG::-webkit-slider-thumb {
+            background: #60a5fa;
+        }
+
+        input#minAgiG::-webkit-slider-thumb {
+            background: #34d399;
+        }
+
+        input#minHpG::-webkit-slider-thumb {
+            background: #e879f9;
+        }
 
         .attr-input {
             display: flex;
@@ -214,10 +230,25 @@
             background: #fff;
         }
 
-        input#attrEarth::-webkit-slider-thumb { background: #fbbf24; box-shadow: 0 0 15px rgba(251, 191, 36, 0.4); }
-        input#attrWater::-webkit-slider-thumb { background: #60a5fa; box-shadow: 0 0 15px rgba(96, 165, 250, 0.4); }
-        input#attrFire::-webkit-slider-thumb { background: #f87171; box-shadow: 0 0 15px rgba(248, 113, 113, 0.4); }
-        input#attrWind::-webkit-slider-thumb { background: #34d399; box-shadow: 0 0 15px rgba(52, 211, 153, 0.4); }
+        input#attrEarth::-webkit-slider-thumb {
+            background: #fbbf24;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+        }
+
+        input#attrWater::-webkit-slider-thumb {
+            background: #60a5fa;
+            box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
+        }
+
+        input#attrFire::-webkit-slider-thumb {
+            background: #f87171;
+            box-shadow: 0 0 15px rgba(248, 113, 113, 0.4);
+        }
+
+        input#attrWind::-webkit-slider-thumb {
+            background: #34d399;
+            box-shadow: 0 0 15px rgba(52, 211, 153, 0.4);
+        }
 
         .container {
             max-width: 1400px;
@@ -358,13 +389,16 @@
         ::-webkit-scrollbar {
             width: 10px;
         }
+
         ::-webkit-scrollbar-track {
             background: var(--bg-color);
         }
+
         ::-webkit-scrollbar-thumb {
             background: #1e293b;
             border-radius: 5px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #334155;
         }
@@ -377,80 +411,82 @@
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>PET ENCYCLOPEDIA</h1>
-    <div class="search-container">
-        <div class="search-row top-row">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="페트 이름 또는 카테고리 검색...">
-            </div>
-            <select id="sortBy">
-                <option value="name">이름순</option>
-                <option value="growth">성장률순</option>
-                <option value="attack">공격력순</option>
-                <option value="hp">내구력순</option>
-            </select>
-            <select id="filterCategory">
-                <option value="all">모든 종류</option>
-            </select>
-        </div>
-
-        <!-- 고급 필터 레이어 -->
-        <div class="filter-panel">
-            <div class="filter-group">
-                <label>최소 성장률: <span id="minGrowthVal">0.0</span></label>
-                <input type="range" id="minGrowth" min="0" max="6" step="0.1" value="0">
+    <header>
+        <h1>지만이의 스톤피디아</h1>
+        <div class="search-container">
+            <div class="search-row top-row">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="페트 이름 또는 카테고리 검색...">
+                </div>
+                <select id="sortBy">
+                    <option value="name">이름순</option>
+                    <option value="growth">성장률순</option>
+                    <option value="attack">공격력순</option>
+                    <option value="hp">내구력순</option>
+                </select>
+                <select id="filterCategory">
+                    <option value="all">모든 종류</option>
+                </select>
             </div>
 
-            <div class="stat-growth-filters">
-                <div class="attr-input">
-                    <label>공격 성장: <span id="minAtkGVal">0.0</span></label>
-                    <input type="range" id="minAtkG" min="0" max="3" step="0.05" value="0">
+            <!-- 고급 필터 레이어 -->
+            <div class="filter-panel">
+                <div class="filter-group">
+                    <label>최소 성장률: <span id="minGrowthVal">0.0</span></label>
+                    <input type="range" id="minGrowth" min="0" max="6" step="0.1" value="0">
                 </div>
-                <div class="attr-input">
-                    <label>방어 성장: <span id="minDefGVal">0.0</span></label>
-                    <input type="range" id="minDefG" min="0" max="3" step="0.05" value="0">
+
+                <div class="stat-growth-filters">
+                    <div class="attr-input">
+                        <label>공격 성장: <span id="minAtkGVal">0.0</span></label>
+                        <input type="range" id="minAtkG" min="0" max="3" step="0.05" value="0">
+                    </div>
+                    <div class="attr-input">
+                        <label>방어 성장: <span id="minDefGVal">0.0</span></label>
+                        <input type="range" id="minDefG" min="0" max="3" step="0.05" value="0">
+                    </div>
+                    <div class="attr-input">
+                        <label>순발 성장: <span id="minAgiGVal">0.0</span></label>
+                        <input type="range" id="minAgiG" min="0" max="3" step="0.05" value="0">
+                    </div>
+                    <div class="attr-input">
+                        <label>내구 성장: <span id="minHpGVal">0.0</span></label>
+                        <input type="range" id="minHpG" min="0" max="15" step="0.1" value="0">
+                    </div>
                 </div>
-                <div class="attr-input">
-                    <label>순발 성장: <span id="minAgiGVal">0.0</span></label>
-                    <input type="range" id="minAgiG" min="0" max="3" step="0.05" value="0">
-                </div>
-                <div class="attr-input">
-                    <label>내구 성장: <span id="minHpGVal">0.0</span></label>
-                    <input type="range" id="minHpG" min="0" max="15" step="0.1" value="0">
-                </div>
-            </div>
-            
-            <div class="attribute-filters">
-                <div class="attr-input">
-                    <label>지(地): <span id="attrEarthVal">0</span></label>
-                    <input type="range" id="attrEarth" min="0" max="10" value="0">
-                </div>
-                <div class="attr-input">
-                    <label>수(水): <span id="attrWaterVal">0</span></label>
-                    <input type="range" id="attrWater" min="0" max="10" value="0">
-                </div>
-                <div class="attr-input">
-                    <label>화(火): <span id="attrFireVal">0</span></label>
-                    <input type="range" id="attrFire" min="0" max="10" value="0">
-                </div>
-                <div class="attr-input">
-                    <label>풍(風): <span id="attrWindVal">0</span></label>
-                    <input type="range" id="attrWind" min="0" max="10" value="0">
+
+                <div class="attribute-filters">
+                    <div class="attr-input">
+                        <label>지(地): <span id="attrEarthVal">0</span></label>
+                        <input type="range" id="attrEarth" min="0" max="10" value="0">
+                    </div>
+                    <div class="attr-input">
+                        <label>수(水): <span id="attrWaterVal">0</span></label>
+                        <input type="range" id="attrWater" min="0" max="10" value="0">
+                    </div>
+                    <div class="attr-input">
+                        <label>화(火): <span id="attrFireVal">0</span></label>
+                        <input type="range" id="attrFire" min="0" max="10" value="0">
+                    </div>
+                    <div class="attr-input">
+                        <label>풍(風): <span id="attrWindVal">0</span></label>
+                        <input type="range" id="attrWind" min="0" max="10" value="0">
+                    </div>
                 </div>
             </div>
         </div>
+    </header>
+
+    <div class="container">
+        <div id="loader">데이터를 불러오는 중...</div>
+        <div id="petGrid" class="pet-grid"></div>
+        <div id="emptyState" class="empty-state" style="display: none;">검색 결과가 없습니다.</div>
     </div>
-</header>
 
-<div class="container">
-    <div id="loader">데이터를 불러오는 중...</div>
-    <div id="petGrid" class="pet-grid"></div>
-    <div id="emptyState" class="empty-state" style="display: none;">검색 결과가 없습니다.</div>
-</div>
-
-<script src="./renderer.js"></script>
+    <script src="./renderer.js"></script>
 </body>
+
 </html>
