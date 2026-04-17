@@ -7,7 +7,7 @@ const createWindow = () => {
         width: 1200,
         height: 900,
         backgroundColor: '#0f172a', // Deep dark blue
-        title: 'Stone Age Pet Encyclopedia',
+        title: '지만이의 스톤피디아',
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true,
