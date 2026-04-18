@@ -11677,7 +11677,13 @@
     },
     "image_url": "https://diseno.live/files/thumbnails/760/002/60x60.fill.jpg?20220710165557",
     "local_image": "2760.jpg",
-    "detail_url": "https://diseno.live/pet/2760?page=35"
+    "detail_url": "https://diseno.live/pet/2760?page=35",
+    "init_stats_decimal": {
+      "hp": 46.44,
+      "atk": 9.30,
+      "def": 6.49,
+      "agi": 7.56
+    }
   },
   {
     "id": "2757",
