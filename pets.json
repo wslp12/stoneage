@@ -8242,7 +8242,13 @@
     },
     "image_url": "https://diseno.live/files/thumbnails/153/139/60x60.fill.jpg?20221031162406",
     "local_image": "139153.jpg",
-    "detail_url": "https://diseno.live/pet/139153?page=25"
+    "detail_url": "https://diseno.live/pet/139153?page=25",
+    "init_stats_decimal": {
+      "hp": 56.37,
+      "atk": 11.70,
+      "def": 9.0,
+      "agi": 6.12
+    }
   },
   {
     "id": "139149",
@@ -10945,7 +10951,13 @@
     },
     "image_url": "https://diseno.live/files/thumbnails/976/002/60x60.fill.jpg?20220607031208",
     "local_image": "2976.jpg",
-    "detail_url": "https://diseno.live/pet/2976?page=33"
+    "detail_url": "https://diseno.live/pet/2976?page=33",
+    "init_stats_decimal": {
+      "hp": 57.38,
+      "atk": 11.82,
+      "def": 9.47,
+      "agi": 2.49
+    }
   },
   {
     "id": "2973",
@@ -11200,7 +11212,13 @@
     },
     "image_url": "https://diseno.live/files/thumbnails/920/002/60x60.fill.jpg?20230825093652",
     "local_image": "2920.jpg",
-    "detail_url": "https://diseno.live/pet/2920?page=33"
+    "detail_url": "https://diseno.live/pet/2920?page=33",
+    "init_stats_decimal": {
+      "hp": 58.89,
+      "atk": 11.99,
+      "def": 10.82,
+      "agi": 4.29
+    }
   },
   {
     "id": "2906",
@@ -12832,7 +12850,13 @@
     },
     "image_url": "https://diseno.live/files/thumbnails/412/002/60x60.fill.jpg?20250829233429",
     "local_image": "2412.jpg",
-    "detail_url": "https://diseno.live/pet/2412?page=38"
+    "detail_url": "https://diseno.live/pet/2412?page=38",
+    "init_stats_decimal": {
+      "hp": 35.19,
+      "atk": 6.83,
+      "def": 5.70,
+      "agi": 3.87
+    }
   },
   {
     "id": "2409",
