@@ -147,7 +147,26 @@ function render() {
                     return `<tr><td style="font-weight:700; color:#cbd5e1;">${names[i]} (-1)</td><td style="text-align:right; font-size:0.7rem; color:${color}; font-weight:700;">${label}</td></tr>`;
                 }).join('');
 
-                return { decs, riskHtml };
+                // 역변(통수) 위험도 경고문 생성
+                const highDecStats = [];
+                for(let i=0; i<4; i++) {
+                    if (D[i] >= 0.70) highDecStats.push(names[i]);
+                }
+                
+                let trapWarningHtml = '';
+                if (highDecStats.length > 0) {
+                    trapWarningHtml = `
+                    <div style="margin-top: 10px; padding: 8px 10px; background: rgba(239, 68, 68, 0.15); border: 1px dashed rgba(239, 68, 68, 0.4); border-radius: 6px; font-size: 0.7rem; color: #fca5a5; line-height: 1.4; word-break: keep-all;">
+                        ⚠️ <strong>역변 주의:</strong> <u>${highDecStats.join(', ')}</u>의 소수점이 유독 높아, 정석 초치를 잡았더라도 성장 시 역변(통수)할 가능성이 높은 페트입니다.
+                    </div>`;
+                } else {
+                    trapWarningHtml = `
+                    <div style="margin-top: 10px; padding: 8px 10px; background: rgba(52, 211, 153, 0.15); border: 1px dashed rgba(52, 211, 153, 0.4); border-radius: 6px; font-size: 0.7rem; color: #6ee7b7; line-height: 1.4; word-break: keep-all;">
+                        ✨ <strong>안정적 육성:</strong> 전반적으로 소수점이 낮아 정석 초치로 시작할 경우 S급으로 안정적인 성장이 기대됩니다.
+                    </div>`;
+                }
+
+                return { decs, riskHtml, trapWarningHtml };
             } catch (e) { return null; }
         };
 
@@ -161,8 +180,8 @@ function render() {
                     <div class="popover-title" style="margin-bottom:0; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:8px;">
                         정석 기준점 : 체${rec.decs.hp.toFixed(2)} 공${rec.decs.atk.toFixed(2)} 방${rec.decs.def.toFixed(2)} 순${rec.decs.agi.toFixed(2)}
                     </div>
-                    
-                    <div class="popover-section-title" style="margin-top:10px;">▶ 마이너스(-1) 타협 가이드</div>
+                    ${rec.trapWarningHtml}
+                    <div class="popover-section-title" style="margin-top:12px;">▶ 마이너스(-1) 타협 가이드</div>
                     <table class="popover-table" style="width:100%; border-spacing: 0 4px; border-collapse: separate;">
                         ${rec.riskHtml}
                     </table>

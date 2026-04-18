@@ -1,7 +1,8 @@
 {
   "name": "stoneage",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Hello World!",
+  "repository": "wslp12/stoneage",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "axios": "^1.15.0",
-    "cheerio": "^1.2.0"
+    "cheerio": "^1.2.0",
+    "update-electron-app": "^3.1.2"
   }
 }
